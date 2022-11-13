@@ -15,5 +15,8 @@
   "bugs": {
     "url": "https://github.com/Sauc1ness/yolks/issues"
   },
-  "homepage": "https://github.com/Sauc1ness/yolks#readme"
+  "homepage": "https://github.com/Sauc1ness/yolks#readme",
+  "publishConfig": {
+    "@sauc1ness:registry": "https://npm.pkg.github.com"
+  }
 }
