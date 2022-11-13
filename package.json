@@ -1,0 +1,19 @@
+{
+  "name": "@sauc1ness/yolks",
+  "version": "1.0.0",
+  "description": "init",
+  "main": "./nodejs/entrypoint.sh",
+  "scripts": {
+    "test": "exit 0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Sauc1ness/yolks.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Sauc1ness/yolks/issues"
+  },
+  "homepage": "https://github.com/Sauc1ness/yolks#readme"
+}
