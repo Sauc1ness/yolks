@@ -22,7 +22,7 @@
 
 FROM        debian:stable-slim
 
-LABEL       author="Michael" maintainer="michael@fave.lu"
+LABEL       author="Michael Hesemann" maintainer="michael@fave.lu"
 
 LABEL       org.opencontainers.image.source="https://github.com/sauc1ness/yolks"
 LABEL       org.opencontainers.image.licenses=MIT
