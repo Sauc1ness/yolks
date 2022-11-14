@@ -20,7 +20,7 @@
 # SOFTWARE.
 #
 
-FROM        --platform=$TARGETOS/$TARGETARCH debian:stable-slim
+FROM        debian:stable-slim
 
 LABEL       author="Michael" maintainer="michael@fave.lu"
 
