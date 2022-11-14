@@ -20,24 +20,33 @@
 # SOFTWARE.
 #
 
-FROM        debian:stable-slim
+############################ WIP
+
+FROM        alpine:3.16
 
 LABEL       author="Michael Hesemann" maintainer="michael@fave.lu"
 
-LABEL       org.opencontainers.image.source="https://github.com/sauc1ness/yolks"
+LABEL       org.opencontainers.image.source="https://github.com/Sauc1ness/yolks/tree/alpine"
 LABEL       org.opencontainers.image.licenses=MIT
 
-ENV         DEBIAN_FRONTEND=noninteractive
+RUN			adduser --disabled-password --home /home/container container
+WORKDIR     /home/container
 
-RUN         dpkg --add-architecture i386 \
-				&& apt update \
-				&& apt upgrade -y \
-				&& apt install -y tar curl gcc g++ lib32gcc-s1 libgcc1 libcurl4-gnutls-dev:i386 libssl1.1:i386 libcurl4:i386 lib32tinfo6 libtinfo6:i386 lib32z1 lib32stdc++6 libncurses5:i386 libcurl3-gnutls:i386 libsdl2-2.0-0:i386 iproute2 gdb libsdl1.2debian libfontconfig1 telnet net-tools netcat tzdata \
-				&& useradd -m -d /home/container container
+RUN         apk update && apk add curl tar && \
+			rm -rf /var/cache/apk/* && \ 
+			curl http://media.steampowered.com/installer/steamcmd_linux.tar.gz --output steamcmd.tar.gz --silent && \
+			tar -xvzf steamcmd.tar.gz && rm steamcmd.tar.gz && \
+			mv
+			
+
+COPY /root/installer/steamcmd.sh /usr/lib/games/steam/
+COPY /root/installer/linux32/steamcmd /usr/lib/games/steam/
+COPY /usr/games/steamcmd /usr/bin/steamcmd
 
 USER        container
 ENV         USER=container HOME=/home/container
+
 WORKDIR     /home/container
 
 COPY        ./entrypoint.sh /entrypoint.sh
-CMD         [ "/bin/bash", "/entrypoint.sh" ]
+CMD         [ "/bin/sh", "/entrypoint.sh" ]
